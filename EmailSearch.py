@@ -110,8 +110,7 @@ def main():
             verbose = get_argv("-nV", "--no-verbose", True)
             ip = gethostbyname(dominio)
 
-        except Exception as e:
-            print(str(e))
+        except Exception:
             ayuda()
     else:
         ayuda()
