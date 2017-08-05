@@ -17,8 +17,8 @@ def ver_SO():
         sistema_operativo = "posix"
     return sistema_operativo
 
+if ver_SO() == "posix":
 
-if ver_SO == "posix":
 # Clase que contiene colores para la CLI
     class colores:
         AMARILLO = '\033[93m'
@@ -29,6 +29,7 @@ if ver_SO == "posix":
 
 # En caso de estar en un SO como windows, definimos los colores como nada
 else:
+
     class colores:
         AMARILLO = ''
         VERDE = ''
@@ -76,14 +77,15 @@ def email_search(dominio, maxN, verbose):
         query = "site:{}".format(dominio)
         res_busqueda = search(query, stop=maxN)
         for ind, url in enumerate(res_busqueda):
-            if verbose:
-                sys.stdout.write("\r{bold}{amarillo}{0}/{1}{end} {bold}páginas analizadas | {bold}{amarillo}{2}{end} {bold}emails encontrados{end}".format(ind + 1, maxN, len(emails_total), amarillo=colores.AMARILLO, end=colores.ENDC, bold=colores.BOLD))
-                sys.stdout.flush()
             req = requests.get(url, allow_redirects=False)
             emails = re.findall(regex_email, req.text)
             for email in emails:
                 if email not in emails_total:
                     emails_total.append(email)
+
+            if verbose:
+                sys.stdout.write("\r{bold}{amarillo}{0}/{1}{end} {bold}páginas analizadas | {bold}{amarillo}{2}{end} {bold}emails encontrados{end}".format(ind + 1, maxN, len(emails_total), amarillo=colores.AMARILLO, end=colores.ENDC, bold=colores.BOLD))
+                sys.stdout.flush()
 
     except KeyboardInterrupt:
         pass
@@ -99,7 +101,8 @@ def main():
     verbose = True
     ip = ""
 
-    if len(sys.argv) < 1:
+    if len(sys.argv) > 1:
+
 # Obtenemos los argumentos del programa. Feo, pero funciona :P
         try:
             dominio = get_argv("-U", "--url", None)
@@ -107,7 +110,8 @@ def main():
             verbose = get_argv("-nV", "--no-verbose", True)
             ip = gethostbyname(dominio)
 
-        except Exception:
+        except Exception as e:
+            print(str(e))
             ayuda()
     else:
         ayuda()
