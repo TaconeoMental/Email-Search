@@ -32,8 +32,8 @@ def email_search(dominio, maxN, verbose):
             req = requests.get(url, allow_redirects=False)
             emails = re.findall(regex_email, req.text)
             for email in emails:
-			    if email not in emails_total:
-			        emails_total.append(email)
+                if email not in emails_total:
+                    emails_total.append(email)
 
     except KeyboardInterrupt:
         pass
@@ -46,7 +46,7 @@ def email_search(dominio, maxN, verbose):
 def main():
     dominio = ""
     nivel = 20
-    verbose = False
+    verbose = True
 
 # Obtenemos los argumentos del programa. Feo, pero funciona :P
     if len(sys.argv) > 1:
@@ -58,8 +58,8 @@ def main():
             if "-n" in sys.argv:
                 indice_n = sys.argv.index("-n")
                 nivel = int(sys.argv[indice_n + 1])
-            if "-v" in sys.argv:
-                verbose = True
+            if "-nV" in sys.argv:
+                verbose = False
         except Exception:
             pass
             # ayuda()
