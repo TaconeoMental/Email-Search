@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+__author__ = "Mateo Contenla"
+__license__ = "Apache-2.0"
+__email__ = "mcontenlaf@gmail.com"
+
 from socket import gethostbyname
 from google import search
 import requests
