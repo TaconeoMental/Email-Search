@@ -88,7 +88,7 @@ def get_argv(tipo_corto, tipo_largo, default):
 
     elif tipo_largo in sys.argv:
         indice_largo = sys.argv.index(tipo_largo)
-        argumento = sys.argv[indice_corto + 1]
+        argumento = sys.argv[indice_largo + 1]
 
     else:
         argumento = default
