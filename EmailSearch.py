@@ -63,18 +63,20 @@ else:
 
 
 def ayuda():
-    msje_ayuda = """Uso: EmailSearch.py [opciones]
+    msje_ayuda = """Uso: EmailSearch.py <Opciones>
 
 Opciones:
-  -H, --help                  Muestra este mensaje de ayuda.
-  -U [url], --url [url]
-                              Dirección web de la página a analizar.
-  -N [nivel], --nivel [nivel]
-                              Cantidad de páginas a analizar (Todas dentro del mismo dominio).
+  -U [url], --url [url]                      Dirección web de la página a analizar.
+  -N [nivel], --nivel [nivel]                Cantidad de páginas del dominio a analizar
+                                             (Default es el máximo posible).
 
-Ejemplo: EmailSearch.py -U www.dominioreal.com -N 50
-
-Presiona "Ctrl-C" en cualquier momento para detener el escaneo.
+Ejemplos:
+    EmailSearch.py -U www.dominio.com        Buscar la mayor cantidad de direcciones de 
+                                             correo en ese dominio.
+    
+    EmailSearch.py -U www.dominio.com -N 50  Buscar direcciones de correo en hasta 50 
+                                             páginas de ese dominio. (Útil si quieres que 
+                                             Google no bloquee tu IP).
     """
     print(msje_ayuda)
     sys.exit()
@@ -101,7 +103,7 @@ def email_search(dominio, maxN):
     emails_total = []
     regex_email = re.compile(r'\b[\w.-]+?@\w+?\.\w+?\b')
 
-# En caso de que maxN sea 0 ( el Default), ya que no sabemos el índice máximo al que llegaremos, se imprime un signo de interrogación
+# En caso de que maxN sea 0 (El default), ya que no sabemos el índice máximo al que llegaremos, se imprime un signo de interrogación
     max_indice = None
     if maxN == 0:
         max_indice = "?"
