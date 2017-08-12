@@ -156,7 +156,7 @@ def main():
 
     emails = email_search(dominio, nivel)
     
-    print("\n\n{bold}{verde}---------- {rojo}{0} Emails encontrados{verde} ----------".format(len(emails), bold=colores.BOLD, verde=colores.VERDE, rojo=colores.ROJO))
+    print("\n\n{bold}{verde}---------- {rojo}{0} Emails encontrados{verde} ----------{end}".format(len(emails), bold=colores.BOLD, verde=colores.VERDE, rojo=colores.ROJO, end=colores.ENDC))
 
     for email in emails:
         print("{verde}[+]{end} {email}".format(verde=colores.VERDE, end=colores.ENDC, email=email))
