@@ -41,7 +41,6 @@ def ver_SO():
     return sistema_operativo
 
 if ver_SO() == "posix":
-
 # Clase que contiene colores para la CLI
     class colores:
         AMARILLO = '\033[93m'
@@ -50,10 +49,8 @@ if ver_SO() == "posix":
         BOLD = '\033[1m'
         ENDC = '\033[0m'
 
-
 # En caso de estar en un SO como windows, definimos los colores como nada
 else:
-
     class colores:
         AMARILLO = ''
         VERDE = ''
@@ -94,7 +91,6 @@ def get_argv(tipo_corto, tipo_largo, default):
 
     else:
         argumento = default
-
     return argumento
 
 
@@ -160,6 +156,5 @@ def main():
 
     for email in emails:
         print("{verde}[+]{end} {email}".format(verde=colores.VERDE, end=colores.ENDC, email=email))
-
 
 main()
